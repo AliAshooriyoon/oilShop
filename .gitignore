@@ -1,3 +1,5 @@
-./tailwind.config.js
+tailwind.config.js
 /.idea
-./title.txt
+title.txt
+/src/help.txt
+/node_modules
