@@ -26,7 +26,7 @@ const pageNumber4 = document.querySelector("#pageNumber4");
 const products = document.querySelectorAll(".product");
 const productBox = document.querySelector(".productBox");
 let currentPage = 1;
-let row = 9;
+let row = 6;
 let pagesNumber = Math.ceil(allProducts.length / row);
 //***************************** Loops ******************************
 for (let i = 1; i <= pagesNumber; i++) {
