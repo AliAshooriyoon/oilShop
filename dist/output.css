@@ -44,7 +44,7 @@ html,
   -moz-tab-size: 4;
   /* 3 */
   -o-tab-size: 4;
-  tab-size: 4;
+     tab-size: 4;
   /* 3 */
   font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   /* 4 */
@@ -89,7 +89,7 @@ Add the correct text decoration in Chrome, Edge, and Safari.
 
 abbr:where([title]) {
   -webkit-text-decoration: underline dotted;
-  text-decoration: underline dotted;
+          text-decoration: underline dotted;
 }
 
 /*
@@ -548,12 +548,6 @@ video {
   width: 100%;
 }
 
-@media (min-width: 350px) {
-  .container {
-    max-width: 350px;
-  }
-}
-
 @media (min-width: 640px) {
   .container {
     max-width: 640px;
@@ -572,33 +566,15 @@ video {
   }
 }
 
-@media (min-width: 1100px) {
-  .container {
-    max-width: 1100px;
-  }
-}
-
 @media (min-width: 1280px) {
   .container {
     max-width: 1280px;
   }
 }
 
-@media (min-width: 1300px) {
-  .container {
-    max-width: 1300px;
-  }
-}
-
 @media (min-width: 1536px) {
   .container {
     max-width: 1536px;
-  }
-}
-
-@media (min-width: 1630px) {
-  .container {
-    max-width: 1630px;
   }
 }
 
@@ -610,8 +586,8 @@ video {
   position: relative;
 }
 
-.bottom-28 {
-  bottom: 7rem;
+.bottom-0 {
+  bottom: 0px;
 }
 
 .left-0 {
@@ -634,9 +610,25 @@ video {
   top: 0px;
 }
 
+.bottom-10 {
+  bottom: 2.5rem;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
+}
+
+.mt-\[200px\] {
+  margin-top: 200px;
+}
+
+.mb-60 {
+  margin-bottom: 15rem;
+}
+
+.mb-20 {
+  margin-bottom: 5rem;
 }
 
 .flex {
@@ -672,6 +664,50 @@ video {
   height: 100%;
 }
 
+.h-\[90\%\] {
+  height: 90%;
+}
+
+.h-\[20vh\] {
+  height: 20vh;
+}
+
+.h-\[25vh\] {
+  height: 25vh;
+}
+
+.h-\[35vh\] {
+  height: 35vh;
+}
+
+.h-\[55vh\] {
+  height: 55vh;
+}
+
+.h-\[95vh\] {
+  height: 95vh;
+}
+
+.h-\[105vh\] {
+  height: 105vh;
+}
+
+.h-\[125vh\] {
+  height: 125vh;
+}
+
+.h-\[115vh\] {
+  height: 115vh;
+}
+
+.h-\[135vh\] {
+  height: 135vh;
+}
+
+.h-\[85vh\] {
+  height: 85vh;
+}
+
 .w-20 {
   width: 5rem;
 }
@@ -682,10 +718,6 @@ video {
 
 .w-\[13vw\] {
   width: 13vw;
-}
-
-.w-\[30rem\] {
-  width: 30rem;
 }
 
 .w-full {
@@ -718,17 +750,17 @@ video {
 
 .gap-x-10 {
   -moz-column-gap: 2.5rem;
-  column-gap: 2.5rem;
+       column-gap: 2.5rem;
 }
 
 .gap-x-5 {
   -moz-column-gap: 1.25rem;
-  column-gap: 1.25rem;
+       column-gap: 1.25rem;
 }
 
 .gap-x-56 {
   -moz-column-gap: 14rem;
-  column-gap: 14rem;
+       column-gap: 14rem;
 }
 
 .gap-y-10 {
@@ -757,6 +789,10 @@ video {
 
 .pt-16 {
   padding-top: 4rem;
+}
+
+.pb-20 {
+  padding-bottom: 5rem;
 }
 
 .text-center {
@@ -814,29 +850,6 @@ video {
   line-height: 1;
 }
 
-@media (min-width: 350px) {
-  .mobile\:left-20 {
-    left: 5rem;
-  }
-
-  .mobile\:ml-0 {
-    margin-left: 0px;
-  }
-
-  .mobile\:size-12 {
-    width: 3rem;
-    height: 3rem;
-  }
-
-  .mobile\:h-20 {
-    height: 5rem;
-  }
-
-  .mobile\:border-\[3px\] {
-    border-width: 3px;
-  }
-}
-
 @media (min-width: 640px) {
   .sm\:left-32 {
     left: 8rem;
@@ -853,7 +866,7 @@ video {
 
   .sm\:gap-x-10 {
     -moz-column-gap: 2.5rem;
-    column-gap: 2.5rem;
+         column-gap: 2.5rem;
   }
 
   .sm\:text-2xl {
@@ -889,7 +902,7 @@ video {
 
   .lg\:gap-x-20 {
     -moz-column-gap: 5rem;
-    column-gap: 5rem;
+         column-gap: 5rem;
   }
 
   .lg\:border-\[5px\] {
@@ -897,33 +910,9 @@ video {
   }
 }
 
-@media (min-width: 1100px) {
-  .min-desktop\:size-28 {
-    width: 7rem;
-    height: 7rem;
-  }
-
-  .min-desktop\:border-\[10px\] {
-    border-width: 10px;
-  }
-}
-
-@media (min-width: 1300px) {
-  .tablet\:text-3xl {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
-  }
-}
-
 @media (min-width: 1536px) {
   .\32xl\:text-4xl {
     font-size: 2.25rem;
     line-height: 2.5rem;
-  }
-}
-
-@media (min-width: 1630px) {
-  .big-desktop\:w-\[45\%\] {
-    width: 45%;
   }
 }
