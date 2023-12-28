@@ -1,0 +1,34 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@font-face {
+    src: url("../fonts/Itim-Regular.ttf");
+    font-family: Itim;
+}
+* {
+    font-family: Itim, serif;
+}
+.header {
+    border-radius: 0 0 0 70px;
+    border: 0 solid #000;
+    background: #163020;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+#logo {
+    border-radius: 424px;
+}
+.product {
+    border-radius: 25px;
+    background: #b6c4b6;
+}
+
+.break {
+    flex-basis: 100%;
+    height: 0;
+}
+
+.pageNumber {
+    border-radius: 20px;
+    @apply flex items-center cursor-pointer justify-center text-5xl;
+}
