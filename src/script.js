@@ -19,14 +19,12 @@ const allProducts = [
   { name: "Mandelöl", id: 18 },
 ];
 const pageBox = document.querySelector(".pagesBox");
-const pageNumber1 = document.querySelector("#pageNumber1");
-const pageNumber2 = document.querySelector("#pageNumber2");
-const pageNumber3 = document.querySelector("#pageNumber3");
-const pageNumber4 = document.querySelector("#pageNumber4");
-const products = document.querySelectorAll(".product");
 const productBox = document.querySelector(".productBox");
 let currentPage = 1;
-let row = 9;
+let row = 6;
+let products;
+let pages;
+let num = 1;
 //Responsiv Design
 if (row < 9) {
   document.querySelector("body").classList.remove("h-[135vh]");
@@ -35,16 +33,18 @@ if (row < 9) {
 let pagesNumber = Math.ceil(allProducts.length / row);
 //***************************** Loops ******************************
 for (let i = 1; i <= pagesNumber; i++) {
-  pageBox.innerHTML += `<div id="pageNumber${i}" class="pageNumber w-20 h-20 bg-[#B6C4B6]">${i}</div>`;
+  pageBox.innerHTML += `<div itemid="${i}" id="pageNumber${i}" class="pageNumber w-20 h-20 bg-[#B6C4B6]">${i}</div>`;
   if (i === currentPage) {
     let pageNumber = document.getElementById(`pageNumber${i}`);
     pageNumber.classList.remove("bg-[#B6C4B6]");
     pageNumber.classList.add("bg-[#438941]");
   }
 }
-for (let p = 1; p <= row; p++) {
-  console.log(p);
-  console.log(allProducts[p].name);
+for (num = 1; num <= row; num++) {
+  products = document.querySelectorAll(".product");
+  pages = document.querySelectorAll(".pageNumber");
+  // console.log(p);
+  // console.log(allProducts[p].name);
   productBox.innerHTML += `
     <div class="product w-64 h-64 text-center">
           <img draggable="false"
@@ -53,12 +53,42 @@ for (let p = 1; p <= row; p++) {
             class="productPhoto size-52 mx-auto"
           />
             <p class="productTitle text-3xl">
-                ${allProducts[p].name}
+                ${allProducts[num].name}
             </p>
         </div>
   `;
-  if (p !== 0 && p % 3 === 0) {
-    console.log("true" + p);
+  if (num !== 0 && num % 3 === 0) {
     productBox.innerHTML += "" + "<div class='break'></div>";
   }
 }
+
+pages.forEach(function (page) {
+  console.log(page.getAttribute("itemid"));
+  page.addEventListener("click", managePages);
+
+  function managePages(p) {
+    productBox.innerHTML = "";
+    console.log(p.target.getAttribute("itemid"));
+    let pageId = p.target.getAttribute("itemid");
+    for (num; num <= row * pageId; num++) {
+      p.target.classList.remove("bg-[#B6C4B6]");
+      p.target.classList.add("bg-[#438941]");
+      console.log(allProducts[num]);
+      productBox.innerHTML += `
+    <div class="product w-64 h-64 text-center">
+          <img draggable="false"
+            src="../media/Entity_50-removebg-preview.png"
+            alt=""
+            class="productPhoto size-52 mx-auto"
+          />
+            <p class="productTitle text-3xl">
+                ${allProducts[num].name}
+            </p>
+        </div>
+  `;
+      if (num !== 0 && num % 3 === 0) {
+        productBox.innerHTML += "" + "<div class='break'></div>";
+      }
+    }
+  }
+});
