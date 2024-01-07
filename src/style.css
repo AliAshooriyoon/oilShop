@@ -28,7 +28,6 @@
     height: 0;
 }
 
-.pageNumber {
-    border-radius: 20px;
-    @apply flex items-center cursor-pointer justify-center text-5xl;
+.pageNumber{
+    @apply w-20 h-20 bg-[#B6C4B6];
 }
