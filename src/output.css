@@ -623,17 +623,8 @@ video {
   display: flex;
 }
 
-.size-52 {
-  width: 13rem;
-  height: 13rem;
-}
-
 .h-24 {
   height: 6rem;
-}
-
-.h-64 {
-  height: 16rem;
 }
 
 .h-96 {
@@ -652,24 +643,20 @@ video {
   height: 100%;
 }
 
-.h-52 {
-  height: 13rem;
-}
-
-.w-64 {
-  width: 16rem;
-}
-
 .w-\[13vw\] {
   width: 13vw;
+}
+
+.w-\[80\%\] {
+  width: 80%;
 }
 
 .w-full {
   width: 100%;
 }
 
-.w-52 {
-  width: 13rem;
+.max-w-7xl {
+  max-width: 80rem;
 }
 
 .max-w-\[100\%\] {
@@ -725,22 +712,8 @@ video {
   background-color: rgb(48 77 48 / var(--tw-bg-opacity));
 }
 
-.bg-red-700 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(185 28 28 / var(--tw-bg-opacity));
-}
-
 .pt-16 {
   padding-top: 4rem;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
 }
 
 .text-white {
@@ -779,11 +752,60 @@ video {
   height: 0;
 }
 
-.pageNumber {
+.page {
+  display: flex;
   height: 5rem;
   width: 5rem;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
   --tw-bg-opacity: 1;
-  background-color: rgb(182 196 182 / var(--tw-bg-opacity));
+  background-color: rgb(22 163 74 / var(--tw-bg-opacity));
+  font-size: 3rem;
+  line-height: 1;
+  transition-delay: 150ms;
+}
+
+.selectedPage {
+  display: flex;
+  height: 5rem;
+  width: 5rem;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(202 138 4 / var(--tw-bg-opacity));
+  font-size: 3rem;
+  line-height: 1;
+  transition-delay: 150ms;
+}
+
+.page:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(23 23 23 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.product {
+  height: 16rem;
+  width: 16rem;
+  cursor: pointer;
+  text-align: center;
+}
+
+.productPhoto {
+  margin-left: auto;
+  margin-right: auto;
+  width: 13rem;
+  height: 13rem;
+}
+
+.productTitle {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
 }
 
 @media (min-width: 640px) {
