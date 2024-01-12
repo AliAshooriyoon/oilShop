@@ -627,16 +627,16 @@ video {
   display: flex;
 }
 
-.hidden {
-  display: none;
-}
-
 .h-20 {
   height: 5rem;
 }
 
 .h-24 {
   height: 6rem;
+}
+
+.h-28 {
+  height: 7rem;
 }
 
 .h-32 {
@@ -665,10 +665,6 @@ video {
 
 .h-full {
   height: 100%;
-}
-
-.h-28 {
-  height: 7rem;
 }
 
 .w-48 {
