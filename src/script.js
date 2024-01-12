@@ -64,6 +64,10 @@ const allProducts = [
 ];
 const pageBox = document.querySelector(".pagesBox");
 const productsBox = document.querySelector(".productsBox");
+// let shoppingBox = document.querySelector(".shoppingBox");
+let productsNameList = document.querySelector(".productsNameListShow");
+let pricesList = document.querySelector(".pricesLIstShow");
+let optionsProductList = document.querySelector(".optionsProductListShow");
 let currentPage = 1;
 let rowContent = 6;
 let num = 1;

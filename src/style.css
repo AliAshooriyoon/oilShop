@@ -48,3 +48,23 @@
 .productTitle{
     @apply  text-3xl;
 }
+.productName{
+    @apply w-full h-32 flex items-center justify-center text-5xl;
+}
+.productsPhoto{
+    @apply  size-32;
+}
+
+.productPrice{
+    @apply w-full h-32 flex items-center justify-center text-white text-5xl;
+}
+
+.productSetting{
+    @apply  w-full h-32 flex gap-x-10 items-center justify-center text-5xl;
+}
+input.count{
+    @apply w-28 text-black h-10 outline-0 text-center text-4xl rounded-2xl indent-5;
+}
+.removeItem{
+    @apply  w-28 h-12 bg-red-700 text-2xl rounded-2xl;
+}
