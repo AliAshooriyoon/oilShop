@@ -1,65 +1,111 @@
 const allProducts = [
-  { name: "Karottenöl", img: "../media/Entity_50-removebg-preview.png", id: 1 },
-  { name: "Mandelöl", img: "../media/Entity_82-removebg-preview.png", id: 2 },
-  { name: "Schwarzöl", img: "../media/Entity_115-removebg-preview.png", id: 3 },
-  { name: "Sesamöl", img: "../media/Entity_121-removebg-preview.png", id: 4 },
+  {
+    name: "Karottenöl",
+    img: "../media/Entity_50-removebg-preview.png",
+    id: 1,
+    price: 4.99,
+  },
+  {
+    name: "Mandelöl",
+    img: "../media/Entity_82-removebg-preview.png",
+    id: 2,
+    price: 3.99,
+  },
+  {
+    name: "Schwarzöl",
+    img: "../media/Entity_115-removebg-preview.png",
+    id: 3,
+    price: 4.85,
+  },
+  {
+    name: "Sesamöl",
+    img: "../media/Entity_121-removebg-preview.png",
+    id: 4,
+    price: 3.55,
+  },
   {
     name: "Kokosnussöl",
     img: "../media/Entity_50-removebg-preview%20(1).png",
     id: 5,
+    price: 2.99,
   },
   {
     name: "Haselnussöl",
     img: "../media/Entity_82-removebg-preview.png",
     id: 6,
+    price: 1.99,
   },
   {
     name: "Haselnussöl",
     img: "../media/Entity_50-removebg-preview.png",
     id: 7,
+    price: 6.99,
   },
   {
     name: "Kokosnussöl",
     img: "../media/Entity_82-removebg-preview.png",
     id: 8,
+    price: 7.99,
   },
-  { name: "Sesamöl", img: "../media/Entity_115-removebg-preview.png", id: 9 },
+  {
+    name: "Sesamöl",
+    img: "../media/Entity_115-removebg-preview.png",
+    id: 9,
+    price: 2.99,
+  },
   {
     name: "Schwarzöl",
     img: "../media/Entity_121-removebg-preview.png",
     id: 10,
+    price: 3.75,
   },
   {
     name: "Karottenöl",
     img: "../media/Entity_50-removebg-preview%20(1).png",
     id: 11,
+    price: 4.99,
   },
-  { name: "Mandelöl", img: "../media/Entity_82-removebg-preview.png", id: 12 },
+  {
+    name: "Mandelöl",
+    img: "../media/Entity_82-removebg-preview.png",
+    id: 12,
+    price: 1.99,
+  },
   {
     name: "Haselnussöl",
     img: "../media/Entity_50-removebg-preview.png",
     id: 13,
+    price: 4.55,
   },
   {
     name: "Kokosnussöl",
     img: "../media/Entity_50-removebg-preview%20(1).png",
     id: 14,
+    price: 1.99,
   },
   {
     name: "Haselnussöl",
     img: "../media/Entity_121-removebg-preview.png",
     id: 15,
+    price: 3.55,
   },
   {
     name: "Karottenöl",
     img: "../media/Entity_82-removebg-preview.png",
     id: 16,
+    price: 6.99,
   },
-  { name: "Sesamöl", img: "../media/Entity_50-removebg-preview.png", id: 17 },
+  {
+    name: "Sesamöl",
+    img: "../media/Entity_50-removebg-preview.png",
+    id: 17,
+    price: 4.99,
+  },
   {
     name: "Mandelöl",
     img: "../media/Entity_50-removebg-preview%20(1).png",
     id: 18,
+    price: 3.99,
   },
 ];
 const pageBox = document.querySelector(".pagesBox");
@@ -71,6 +117,8 @@ let optionsProductList = document.querySelector(".optionsProductListShow");
 let currentPage = 1;
 let rowContent = 6;
 let num = 1;
+allPricesElm = document.querySelector(".allPrice");
+let allPrices = 0;
 function showProducts(allProducts, row, currenP, productsElm) {
   productsElm.innerHTML = "";
   let endIndex = row * currenP;
@@ -89,11 +137,47 @@ function showProducts(allProducts, row, currenP, productsElm) {
     productTitle.classList.add("productTitle");
     product.append(productTitle);
     productsElm.append(product);
+    product.addEventListener("click", () => {
+      addProductToCart(
+        productsNameList,
+        pricesList,
+        optionsProductList,
+        allPricesElm,
+        productInfo,
+      );
+    });
     num++;
   });
-  // for (let i = 0; i < endIndex; i++) {
-  //
-  // }
+}
+function addProductToCart(
+  productNameElm,
+  productPriceElm,
+  ProductOptionsElm,
+  allPricesElm,
+  product,
+) {
+  let productElm = document.createElement("div");
+  productElm.classList.add("productName");
+  productElm.innerHTML = product.name;
+  productNameElm.append(productElm);
+  let productPrice = document.createElement("div");
+  productPrice.classList.add("productPrice");
+  productPrice.innerHTML = `${product.price} $`;
+  allPrices += product.price;
+  allPricesElm.innerHTML = `${allPrices}`;
+  console.log(product.price);
+  let productSetting = document.createElement("div");
+  productSetting.classList.add("productSetting");
+  ProductOptionsElm.append(productSetting);
+  productPriceElm.append(productPrice);
+  let countInput = document.createElement("input");
+  countInput.classList.add("count");
+  countInput.value = `${1}`;
+  productSetting.append(countInput);
+  let removeButton = document.createElement("div");
+  removeButton.classList.add("removeItem");
+  removeButton.innerHTML = "Remove";
+  productSetting.append(removeButton);
 }
 function showPages(allProducts, pageElm, row) {
   pageElm.innerHTML = "";

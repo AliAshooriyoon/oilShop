@@ -44,24 +44,28 @@
       <div class="pagesBox w-full h-24 absolute bottom-10 mx-auto left-0 right-0 flex gap-x-10 justify-center items-center">
       </div>
   </div>
-  <div class="shoppingBox w-[80%] mx-auto h-[40rem] rounded-[50px] flex relative bg-zinc-800 overflow-y-auto">
+  <div class="shoppingBox w-[80%] mx-auto h-[40rem] rounded-[50px] flex bg-zinc-800 p-10">
 <div class="productsNameList w-[33%] h-[80%] text-center text-4xl">
   <p class="productsListTitle pb-16 pt-5 text-white">ProduktsList</p>
-  <div class="productsNameListShow w-full h-28">
+  <div class="productsNameListShow w-full h-full overflow-y-auto">
   </div>
 </div>
     <div class="pricesList w-[33%] h-[80%] text-center text-4xl">
       <p class="pricesListTitle pb-16 pt-5 text-white">Kosten</p>
-      <div class="pricesLIstShow w-full h-28"></div>
+      <div class="pricesLIstShow w-full h-full overflow-y-auto"></div>
     </div>
-    <div class="optionsProductList w-[33%] h-[80%] text-center text-4xl">
+    <div class="optionsProductList w-[33%] h-[80%]  text-center text-4xl">
 <p class="optionsTitle pb-16 pt-5 text-white">Einstellung</p>
-      <div class="optionsProductListShow w-full h-28"></div>
-    </div>
-    <div class="buyBox absolute text-center bottom-0 w-full h-32">
-      <button class="w-48 rounded-[30px] text-4xl h-20 bg-[#CA8A04] hover:bg-[#86B6F6] delay-150" id="buy">Kaufen</button>
+      <div class="optionsProductListShow w-full h-full overflow-y-auto"></div>
     </div>
   </div>
+    <br>
+    <br>
+    <br>
+    <div class="buyBox relative text-center flex items-center gap-x-10 justify-center left-0 bottom-0 w-full h-32 ">
+      <p class="totalPrice text-3xl text-white">Sie kosten : <span class="allPrice text-[#CA8A04] text-5xl"></span></p>
+      <button class="w-48 rounded-[30px] text-4xl h-20 bg-[#CA8A04] hover:bg-[#86B6F6] delay-150" id="buy">Kaufen</button>
+    </div>
     <br><br><br><br><br>
   </body>
   <script src="script.js"></script>

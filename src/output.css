@@ -635,10 +635,6 @@ video {
   height: 6rem;
 }
 
-.h-28 {
-  height: 7rem;
-}
-
 .h-32 {
   height: 8rem;
 }
@@ -766,6 +762,10 @@ video {
   background-color: rgb(39 39 42 / var(--tw-bg-opacity));
 }
 
+.p-10 {
+  padding: 2.5rem;
+}
+
 .pb-16 {
   padding-bottom: 4rem;
 }
@@ -787,9 +787,24 @@ video {
   line-height: 2.5rem;
 }
 
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-\[\#CA8A04\] {
+  --tw-text-opacity: 1;
+  color: rgb(202 138 4 / var(--tw-text-opacity));
 }
 
 .delay-150 {
@@ -901,6 +916,8 @@ video {
   justify-content: center;
   font-size: 3rem;
   line-height: 1;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .productsPhoto {
@@ -946,8 +963,12 @@ input.count {
 }
 
 .removeItem {
+  display: flex;
   height: 3rem;
   width: 7rem;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
   border-radius: 1rem;
   --tw-bg-opacity: 1;
   background-color: rgb(185 28 28 / var(--tw-bg-opacity));
