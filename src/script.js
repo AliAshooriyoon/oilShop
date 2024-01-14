@@ -163,7 +163,7 @@ function addProductToCart(
   let productPrice = document.createElement("div");
   productPrice.classList.add("productPrice");
   productPrice.innerHTML = `${product.price} $`;
-  allPrices += product.price;
+  allPrices += Math.round(product.price * 100) / 100;
   allPricesElm.innerHTML = `${allPrices}`;
   console.log(product.price);
   let productSetting = document.createElement("div");
