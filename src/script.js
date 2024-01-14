@@ -119,6 +119,7 @@ let rowContent = 6;
 let num = 1;
 allPricesElm = document.querySelector(".allPrice");
 let allPrices = 0;
+let deleted = false;
 function showProducts(allProducts, row, currenP, productsElm) {
   productsElm.innerHTML = "";
   let endIndex = row * currenP;
@@ -156,33 +157,73 @@ function addProductToCart(
   allPricesElm,
   product,
 ) {
+  deleted = false;
   let productPhoto = document.createElement("img");
+  productPhoto.draggable = false;
   productPhoto.src = product.img;
   productPhoto.classList.add("productsPhoto");
   let productElm = document.createElement("div");
+  let countInput = document.createElement("input");
+  countInput.value = `${1}`;
   productElm.classList.add("productName");
   productElm.innerHTML = product.name;
   productNameElm.append(productElm);
   productElm.append(productPhoto);
   let productPrice = document.createElement("div");
   productPrice.classList.add("productPrice");
-  productPrice.innerHTML = `${product.price} $`;
-  allPrices += product.price * 100;
-  allPricesElm.innerHTML = `${Math.round(allPrices * 100) / 10000} $`;
-  console.log(product.price);
+  // product.price *= countInput.value;
+  productPrice.innerHTML = `${product.price}$`;
+  countInput.classList.add("count");
+  allPricesShow(product, allPricesElm);
+
   let productSetting = document.createElement("div");
   productSetting.classList.add("productSetting");
   ProductOptionsElm.append(productSetting);
   productPriceElm.append(productPrice);
-  let countInput = document.createElement("input");
-  countInput.classList.add("count");
-  countInput.value = `${1}`;
   productSetting.append(countInput);
   let removeButton = document.createElement("div");
   removeButton.classList.add("removeItem");
   removeButton.innerHTML = "Remove";
   productSetting.append(removeButton);
+  removeButton.addEventListener("click", () => {
+    removeItem(
+      productElm,
+      productPhoto,
+      productPrice,
+      productSetting,
+      allPrices,
+      product,
+    );
+  });
 }
+function allPricesShow(product, allPricesElm) {
+  if (!deleted) {
+    allPrices += product.price;
+  } else {
+    allPrices -= product.price;
+  }
+  allPricesElm.innerHTML = `${allPrices.toFixed(2)} $`;
+}
+
+function removeItem(
+  productElm,
+  productPhoto,
+  productPriceElm,
+  productOptionsElm,
+  allPrices,
+  product,
+) {
+  productElm.remove();
+  productPhoto.remove();
+  productPriceElm.remove();
+  productOptionsElm.remove();
+  console.log(allPrices);
+  console.log(product.price);
+  // allPrices = allPrices - product.price;
+  deleted = true;
+  allPricesShow(product, allPricesElm);
+}
+
 function showPages(allProducts, pageElm, row) {
   pageElm.innerHTML = "";
   let pagesNum = Math.ceil(allProducts.length / row);
