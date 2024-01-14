@@ -21,7 +21,7 @@ const allProducts = [
     name: "Sesamöl",
     img: "../media/Entity_121-removebg-preview.png",
     id: 4,
-    price: 3.55,
+    price: 3.99,
   },
   {
     name: "Kokosnussöl",
@@ -164,7 +164,7 @@ function addProductToCart(
   productPrice.classList.add("productPrice");
   productPrice.innerHTML = `${product.price} $`;
   allPrices += Math.round(product.price * 100) / 100;
-  allPricesElm.innerHTML = `${allPrices}`;
+  allPricesElm.innerHTML = `${allPrices} $`;
   console.log(product.price);
   let productSetting = document.createElement("div");
   productSetting.classList.add("productSetting");
