@@ -49,10 +49,10 @@
     @apply  text-3xl;
 }
 .productName{
-    @apply w-full h-32 flex items-center justify-center text-5xl text-white;
+    @apply w-full h-32 flex items-center relative justify-center text-4xl text-white;
 }
 .productsPhoto{
-    @apply  size-32;
+    @apply  size-32 absolute left-0;
 }
 
 .productPrice{

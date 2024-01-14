@@ -711,6 +711,10 @@ video {
   justify-content: center;
 }
 
+.justify-around {
+  justify-content: space-around;
+}
+
 .gap-x-10 {
   -moz-column-gap: 2.5rem;
        column-gap: 2.5rem;
@@ -794,6 +798,11 @@ video {
 
 .text-5xl {
   font-size: 3rem;
+  line-height: 1;
+}
+
+.text-6xl {
+  font-size: 3.75rem;
   line-height: 1;
 }
 
@@ -909,18 +918,21 @@ video {
 }
 
 .productName {
+  position: relative;
   display: flex;
   height: 8rem;
   width: 100%;
   align-items: center;
   justify-content: center;
-  font-size: 3rem;
-  line-height: 1;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .productsPhoto {
+  position: absolute;
+  left: 0px;
   width: 8rem;
   height: 8rem;
 }

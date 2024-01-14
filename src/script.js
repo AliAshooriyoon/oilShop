@@ -15,7 +15,7 @@ const allProducts = [
     name: "Schwarzöl",
     img: "../media/Entity_115-removebg-preview.png",
     id: 3,
-    price: 4.85,
+    price: 4.99,
   },
   {
     name: "Sesamöl",
@@ -57,7 +57,7 @@ const allProducts = [
     name: "Schwarzöl",
     img: "../media/Entity_121-removebg-preview.png",
     id: 10,
-    price: 3.75,
+    price: 3.99,
   },
   {
     name: "Karottenöl",
@@ -75,7 +75,7 @@ const allProducts = [
     name: "Haselnussöl",
     img: "../media/Entity_50-removebg-preview.png",
     id: 13,
-    price: 4.55,
+    price: 4.99,
   },
   {
     name: "Kokosnussöl",
@@ -87,7 +87,7 @@ const allProducts = [
     name: "Haselnussöl",
     img: "../media/Entity_121-removebg-preview.png",
     id: 15,
-    price: 3.55,
+    price: 3.99,
   },
   {
     name: "Karottenöl",
@@ -156,15 +156,19 @@ function addProductToCart(
   allPricesElm,
   product,
 ) {
+  let productPhoto = document.createElement("img");
+  productPhoto.src = product.img;
+  productPhoto.classList.add("productsPhoto");
   let productElm = document.createElement("div");
   productElm.classList.add("productName");
   productElm.innerHTML = product.name;
   productNameElm.append(productElm);
+  productElm.append(productPhoto);
   let productPrice = document.createElement("div");
   productPrice.classList.add("productPrice");
   productPrice.innerHTML = `${product.price} $`;
-  allPrices += Math.round(product.price * 100) / 100;
-  allPricesElm.innerHTML = `${allPrices} $`;
+  allPrices += product.price * 100;
+  allPricesElm.innerHTML = `${Math.round(allPrices * 100) / 10000} $`;
   console.log(product.price);
   let productSetting = document.createElement("div");
   productSetting.classList.add("productSetting");
