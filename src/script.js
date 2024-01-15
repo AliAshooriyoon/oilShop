@@ -120,6 +120,8 @@ let num = 1;
 allPricesElm = document.querySelector(".allPrice");
 let allPrices = 0;
 let deleted = false;
+let priceProduct = 0;
+let countEdited = false;
 function showProducts(allProducts, row, currenP, productsElm) {
   productsElm.innerHTML = "";
   let endIndex = row * currenP;
@@ -163,24 +165,28 @@ function addProductToCart(
   productPhoto.src = product.img;
   productPhoto.classList.add("productsPhoto");
   let productElm = document.createElement("div");
-  let countInput = document.createElement("input");
-  countInput.value = `${1}`;
   productElm.classList.add("productName");
   productElm.innerHTML = product.name;
   productNameElm.append(productElm);
+  let countInput = document.createElement("input");
+  countInput.type = "number";
+  countInput.max = "10";
+  countInput.min = "1";
+  countInput.value = `${1}`;
   productElm.append(productPhoto);
   let productPrice = document.createElement("div");
   productPrice.classList.add("productPrice");
-  // product.price *= countInput.value;
   productPrice.innerHTML = `${product.price}$`;
   countInput.classList.add("count");
-  allPricesShow(product, allPricesElm);
-
   let productSetting = document.createElement("div");
   productSetting.classList.add("productSetting");
   ProductOptionsElm.append(productSetting);
   productPriceElm.append(productPrice);
   productSetting.append(countInput);
+  countInput.addEventListener("change", (countElm) => {
+    calculateCount(countElm, productPrice, product, priceProduct);
+  });
+  // allPricesShow(product, allPricesElm, priceProduct, countInput);
   let removeButton = document.createElement("div");
   removeButton.classList.add("removeItem");
   removeButton.innerHTML = "Remove";
@@ -193,17 +199,14 @@ function addProductToCart(
       productSetting,
       allPrices,
       product,
+      priceProduct,
     );
   });
 }
-function allPricesShow(product, allPricesElm) {
-  if (!deleted) {
-    allPrices += product.price;
-  } else {
-    allPrices -= product.price;
-  }
-  allPricesElm.innerHTML = `${allPrices.toFixed(2)} $`;
-}
+// function allPricesShow(product, allPricesElm, priceProduct, ) {
+//   allPrices += product.price * Number(countInput.value);
+//   allPricesElm.innerHTML = `${allPrices.toFixed(2)} $`;
+// }
 
 function removeItem(
   productElm,
@@ -212,6 +215,7 @@ function removeItem(
   productOptionsElm,
   allPrices,
   product,
+  priceProduct,
 ) {
   productElm.remove();
   productPhoto.remove();
@@ -221,9 +225,15 @@ function removeItem(
   console.log(product.price);
   // allPrices = allPrices - product.price;
   deleted = true;
-  allPricesShow(product, allPricesElm);
+  allPricesShow(product, allPricesElm, priceProduct);
 }
-
+function calculateCount(count, productPriceElm, product) {
+  console.log(`count Value is : ${count.target.value}`);
+  console.log(count.target);
+  productPriceElm.innerHTML = `${(product.price * count.target.value).toFixed(
+    2,
+  )} $`;
+}
 function showPages(allProducts, pageElm, row) {
   pageElm.innerHTML = "";
   let pagesNum = Math.ceil(allProducts.length / row);
