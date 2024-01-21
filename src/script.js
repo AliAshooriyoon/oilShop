@@ -119,9 +119,8 @@ let rowContent = 6;
 let num = 1;
 allPricesElm = document.querySelector(".allPrice");
 let allPrices = 0;
-let deleted = false;
 let priceProduct = 0;
-let countEdited = false;
+let userBasket = [];
 function showProducts(allProducts, row, currenP, productsElm) {
   productsElm.innerHTML = "";
   let endIndex = row * currenP;
@@ -159,7 +158,6 @@ function addProductToCart(
   allPricesElm,
   product,
 ) {
-  deleted = false;
   let productPhoto = document.createElement("img");
   productPhoto.draggable = false;
   productPhoto.src = product.img;
@@ -183,15 +181,22 @@ function addProductToCart(
   ProductOptionsElm.append(productSetting);
   productPriceElm.append(productPrice);
   productSetting.append(countInput);
-  countInput.addEventListener("change", (countElm) => {
-    calculateCount(countElm, productPrice, product, priceProduct);
+  userBasket.push({
+    name: product.name,
+    price: product.price,
+    id: product.id,
+    image: product.img,
+    count: Number(countInput.value),
   });
-  // allPricesShow(product, allPricesElm, priceProduct, countInput);
+
+  calculateCount(countInput, product, userBasket, productPrice);
+  // countInput.addEventListener("change", (countElm) => {
+  // });
   let removeButton = document.createElement("div");
   removeButton.classList.add("removeItem");
   removeButton.innerHTML = "Remove";
   productSetting.append(removeButton);
-  removeButton.addEventListener("click", () => {
+  removeButton.addEventListener("click", (button) => {
     removeItem(
       productElm,
       productPhoto,
@@ -199,7 +204,8 @@ function addProductToCart(
       productSetting,
       allPrices,
       product,
-      priceProduct,
+      userBasket,
+      button,
     );
   });
 }
@@ -207,7 +213,7 @@ function addProductToCart(
 //   allPrices += product.price * Number(countInput.value);
 //   allPricesElm.innerHTML = `${allPrices.toFixed(2)} $`;
 // }
-
+let findIndex;
 function removeItem(
   productElm,
   productPhoto,
@@ -215,7 +221,8 @@ function removeItem(
   productOptionsElm,
   allPrices,
   product,
-  priceProduct,
+  userBasket,
+  button,
 ) {
   productElm.remove();
   productPhoto.remove();
@@ -224,15 +231,32 @@ function removeItem(
   console.log(allPrices);
   console.log(product.price);
   // allPrices = allPrices - product.price;
-  deleted = true;
-  allPricesShow(product, allPricesElm, priceProduct);
+  userBasket.forEach((basketsProduct) => {
+    // if (basketsProduct.id === product.id) {
+    //   console.log(basketsProduct);
+    // }
+    findIndex = userBasket.findIndex(
+      (basketsProduct) => basketsProduct.id === product.id,
+    );
+    console.log(findIndex !== -1 ? findIndex : undefined);
+  });
+  console.log(findIndex);
+  userBasket.splice(findIndex, 1);
+  console.log(userBasket);
 }
-function calculateCount(count, productPriceElm, product) {
-  console.log(`count Value is : ${count.target.value}`);
-  console.log(count.target);
-  productPriceElm.innerHTML = `${(product.price * count.target.value).toFixed(
-    2,
-  )} $`;
+
+function calculateCount(countElm, product, userBasket, productPriceElm) {
+  // console.log(userBasket[i].name);
+  countElm.addEventListener("change", (info) => {
+    console.log(info);
+    userBasket.forEach((basketsProduct) => {
+      if (product.id === basketsProduct.id) {
+        basketsProduct.count = Number(countElm.value);
+        basketsProduct.price = Number(countElm.value) * product.price;
+        productPriceElm.innerHTML = `${basketsProduct.price.toFixed(2)} $`;
+      }
+    });
+  });
 }
 function showPages(allProducts, pageElm, row) {
   pageElm.innerHTML = "";
